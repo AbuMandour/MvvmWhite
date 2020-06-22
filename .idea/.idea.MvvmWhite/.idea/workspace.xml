@@ -27,7 +27,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b45b206f-b802-4d7a-9517-72d7538ab4a4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MvvmWhite/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MvvmWhite/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1592807141153</updated>
       <workItem from="1592807152891" duration="708000" />
-      <workItem from="1592807886385" duration="2482000" />
+      <workItem from="1592807886385" duration="2913000" />
     </task>
     <servers />
   </component>
@@ -151,9 +150,9 @@
       <screen x="0" y="23" width="1920" height="1005" />
     </state>
     <state x="469" y="156" key="SettingsEditor/0.23.1920.1005/-1680.23.1680.1027@0.23.1920.1005" timestamp="1592810298501" />
-    <state x="560" y="257" key="Vcs.Push.Dialog.v2" timestamp="1592810168990">
+    <state x="560" y="257" key="Vcs.Push.Dialog.v2" timestamp="1592810491042">
       <screen x="0" y="23" width="1920" height="1005" />
     </state>
-    <state x="560" y="257" key="Vcs.Push.Dialog.v2/0.23.1920.1005/-1680.23.1680.1027@0.23.1920.1005" timestamp="1592810168990" />
+    <state x="560" y="257" key="Vcs.Push.Dialog.v2/0.23.1920.1005/-1680.23.1680.1027@0.23.1920.1005" timestamp="1592810491042" />
   </component>
 </project>
