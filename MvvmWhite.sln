@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteMvvm", "..\AlarabyAlJadeed\WhiteService\WhiteMvvm\WhiteMvvm.csproj", "{76348144-FE11-47E9-B5FF-F3E0AD5F2B71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteMvvm", "..\MvvmWhite\WhiteMvvm\WhiteMvvm.csproj", "{76348144-FE11-47E9-B5FF-F3E0AD5F2B71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

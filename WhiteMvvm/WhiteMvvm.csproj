@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Authors>&gt;Muhammad Abu Mandour</Authors>
+    <Product>&gt;Muhammad Abu Mandour</Product>
+    <Company>White</Company>
+    <Description>a Xamarin forms framework base on mvvm</Description>
+    <Copyright>Copyright 2019</Copyright>
+    <PackageLicenseUrl>https://github.com/AbuMandour/WhiteMvvm/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/AbuMandour/WhiteMvvm</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AbuMandour/WhiteMvvm</RepositoryUrl>
+    <PackageTags>Xamarin, Mvvm, xamarin , mvvm</PackageTags>
+    <NeutralLanguage>en-001</NeutralLanguage>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
+    <FileVersion>1.0.6.0</FileVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.440" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="SQLiteNetExtensions.Async" Version="2.1.0" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.3" />
+    <PackageReference Include="Unity" Version="5.11.4" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.847" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Bases\BaseContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
