@@ -5,16 +5,16 @@
     <LangVersion>latest</LangVersion>
     <Authors>&gt;Muhammad Abu Mandour</Authors>
     <Product>&gt;Muhammad Abu Mandour</Product>
-    <Company>White</Company>
+    <Company>f-else</Company>
     <Description>a Xamarin forms framework base on mvvm</Description>
-    <Copyright>Copyright 2019</Copyright>
-    <PackageLicenseUrl>https://github.com/AbuMandour/WhiteMvvm/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/AbuMandour/WhiteMvvm</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/AbuMandour/WhiteMvvm</RepositoryUrl>
+    <Copyright>Copyright 2020</Copyright>
+    <PackageLicenseUrl>https://github.com/AbuMandour/MvvmWhite/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/AbuMandour/MvvmWhite</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AbuMandour/MvvmWhite</RepositoryUrl>
     <PackageTags>Xamarin, Mvvm, xamarin , mvvm</PackageTags>
     <NeutralLanguage>en-001</NeutralLanguage>
-    <AssemblyVersion>1.0.6.0</AssemblyVersion>
-    <FileVersion>1.0.6.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
