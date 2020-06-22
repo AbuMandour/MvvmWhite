@@ -25,7 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b45b206f-b802-4d7a-9517-72d7538ab4a4" name="Default Changelist" comment="">
+    <list default="true" id="b45b206f-b802-4d7a-9517-72d7538ab4a4" name="Default Changelist" comment="update git ignore">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +46,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/MvvmWhite.sln" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/WhiteMvvm/WhiteMvvm.csproj" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -78,8 +78,16 @@
       <option name="presentableId" value="Default" />
       <updated>1592807141153</updated>
       <workItem from="1592807152891" duration="708000" />
-      <workItem from="1592807886385" duration="2913000" />
+      <workItem from="1592807886385" duration="3241000" />
     </task>
+    <task id="LOCAL-00001" summary="update git ignore">
+      <created>1592810955975</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592810955975</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,15 +152,21 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="update git ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="update git ignore" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="192" y="104" key="DiffContextDialog" timestamp="1592811039117">
+      <screen x="0" y="23" width="1920" height="1005" />
+    </state>
+    <state x="192" y="104" key="DiffContextDialog/0.23.1920.1005/-1680.23.1680.1027@0.23.1920.1005" timestamp="1592811039117" />
     <state x="469" y="156" key="SettingsEditor" timestamp="1592810298501">
       <screen x="0" y="23" width="1920" height="1005" />
     </state>
     <state x="469" y="156" key="SettingsEditor/0.23.1920.1005/-1680.23.1680.1027@0.23.1920.1005" timestamp="1592810298501" />
-    <state x="560" y="257" key="Vcs.Push.Dialog.v2" timestamp="1592810491042">
+    <state x="560" y="257" key="Vcs.Push.Dialog.v2" timestamp="1592811040958">
       <screen x="0" y="23" width="1920" height="1005" />
     </state>
-    <state x="560" y="257" key="Vcs.Push.Dialog.v2/0.23.1920.1005/-1680.23.1680.1027@0.23.1920.1005" timestamp="1592810491042" />
+    <state x="560" y="257" key="Vcs.Push.Dialog.v2/0.23.1920.1005/-1680.23.1680.1027@0.23.1920.1005" timestamp="1592811040958" />
   </component>
 </project>
