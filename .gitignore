@@ -5,3 +5,5 @@
 .idea/
 /WhiteMvvmUnitTest/obj/
 /WhiteMvvmUnitTest/bin/
+obj/
+bin/
