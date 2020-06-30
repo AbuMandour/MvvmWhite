@@ -13,18 +13,18 @@ namespace WhiteMvvm.Bases
             NavigationPage.SetHasNavigationBar(this, false);
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
-        private BaseViewModel ViewModel => BindingContext as BaseViewModel;
+        private BaseViewModel? ViewModel => BindingContext as BaseViewModel;
         protected override void OnAppearing()
         {
             base.OnAppearing();
             AppearingIterateChildren(this);
-            ViewModel?.InternalOnAppear().SafeFireAndForget();
+            ViewModel?.InternalOnAppear(this).SafeFireAndForget();
         }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             DisappearingIterateChildren(this);
-            ViewModel?.OnDisappearing().SafeFireAndForget();
+            ViewModel?.OnDisappearing(this).SafeFireAndForget();
         }
         protected override bool OnBackButtonPressed()
         {

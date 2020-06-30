@@ -12,12 +12,12 @@ namespace WhiteMvvm.Bases
     {
         protected internal virtual void OnDisappearing()
         {
-            ViewModel.OnDisappearing().SafeFireAndForget();
+            ViewModel?.OnDisappearing(this).SafeFireAndForget();
         }
         protected internal virtual void OnAppearing()
         {
-            ViewModel.InternalOnAppear().SafeFireAndForget();
+            ViewModel?.InternalOnAppear(this).SafeFireAndForget();
         }
-        public BaseViewModel ViewModel => BindingContext as BaseViewModel;
+        private BaseViewModel? ViewModel => BindingContext as BaseViewModel;
     }
 }

@@ -28,7 +28,8 @@ namespace WhiteMvvm.Bases
             get => _isRefreshing;
             set { _isRefreshing = value; OnPropertyChanged(); }
         }
-        public object NavigationData { get; private set; }
+
+        private object NavigationData { get; set; }
         public BaseViewModel()
         {
             DialogService = LocatorService.Instance.Resolve<IDialogService>();
@@ -77,20 +78,20 @@ namespace WhiteMvvm.Bases
         {
             return Task.CompletedTask;
         }
-        protected internal virtual Task OnAppearing()
+        protected internal virtual Task OnAppearing(object view)
         {
             return Task.CompletedTask;
         }
-        protected internal virtual Task OnDisappearing()
+        protected internal virtual Task OnDisappearing(object view)
         {
             return Task.CompletedTask;
         }
-        protected internal virtual Task InitializeAsync(object navigationData)
+        protected virtual Task InitializeAsync(object navigationData)
         {
             NavigationData = navigationData;
             return Task.CompletedTask;
         }
-        protected internal virtual Task InitializeVolatileAsync(object navigationData)
+        protected virtual Task InitializeVolatileAsync(object navigationData)
         {
             NavigationData = navigationData;
             return Task.CompletedTask;
@@ -108,9 +109,9 @@ namespace WhiteMvvm.Bases
         {
             return Task.CompletedTask;
         }
-        internal Task InternalOnAppear()
+        internal Task InternalOnAppear(object view)
         {
-            OnAppearing().SafeFireAndForget();
+            OnAppearing(view).SafeFireAndForget();
             if (_isOnAppeared)
                 return Task.CompletedTask;
             _isOnAppeared = true;
