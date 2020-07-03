@@ -17,6 +17,6 @@ namespace WhiteMvvm.Services.Navigation
         Task PushModal(IModal modal);
         Task SetMainModal(IModal modal);
         void ChangeCurrentTabbedModal<TBaseViewModel>() where TBaseViewModel : BaseViewModel;
-        BaseTabbedPage CurrentTabbedPage { get;}
+        TabbedPage CurrentTabbedPage { get;}
     }
 }

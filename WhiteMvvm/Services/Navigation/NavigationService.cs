@@ -137,7 +137,7 @@ namespace WhiteMvvm.Services.Navigation
             var page = currentTabbedPage.Children.Select(GetLastContentPage).FirstOrDefault(basePage => basePage.BindingContext is TBaseViewModel);
             currentTabbedPage.CurrentPage = page ?? throw new NavigationException("page you requested not found");
         }
-        public BaseTabbedPage CurrentTabbedPage => GetLastTabbedPage(null);
+        public TabbedPage CurrentTabbedPage => GetLastTabbedPage(null);
         private static BaseViewModel GetCurrentViewModel()
         {
             var currentPage = GetCurrentPage();
@@ -195,7 +195,7 @@ namespace WhiteMvvm.Services.Navigation
             }
             return page as NavigationPage;
         }
-        private static MasterDetailPage GetLastMasterDetailPage(Page root)
+        private static MasterDetailPage? GetLastMasterDetailPage(Page root)
         {
             if (root == null)
             {
@@ -217,7 +217,7 @@ namespace WhiteMvvm.Services.Navigation
             }
             return root as MasterDetailPage;
         }
-        private static BaseTabbedPage GetLastTabbedPage(Page root)
+        private static TabbedPage? GetLastTabbedPage(Page root)
         {
             if (root == null)
             {
@@ -225,7 +225,7 @@ namespace WhiteMvvm.Services.Navigation
                 root = lastModal;
             }
             var pageType = root.GetType();
-            while (pageType != typeof(BaseTabbedPage))
+            while (pageType != typeof(TabbedPage))
             {
                 switch (root)
                 {
@@ -234,10 +234,10 @@ namespace WhiteMvvm.Services.Navigation
                     case MasterDetailPage masterDetailPage:
                         return GetLastTabbedPage(masterDetailPage.Detail);
                     default:
-                        return root as BaseTabbedPage;
+                        return root as TabbedPage;
                 }
             }
-            return root as BaseTabbedPage;
+            return root as TabbedPage;
         }
         private static async Task PushModalGlobal(Page page)
         {
@@ -340,7 +340,7 @@ namespace WhiteMvvm.Services.Navigation
                 throw new NavigationException("tabbed page must be more than one page");
             //check tabbed page
             if (tabbedModal.TabbedPage == null)
-                tabbedModal.TabbedPage = new BaseTabbedPage();
+                tabbedModal.TabbedPage = new TabbedPage();
             //add modals to tabbed page
             foreach (var modal in tabbedModal.Modals)
             {
@@ -372,7 +372,7 @@ namespace WhiteMvvm.Services.Navigation
                 throw new NavigationException("tabbed page must be more than one page");
             //check tabbed page
             if (tabbedModal.TabbedPage == null)
-                tabbedModal.TabbedPage = new BaseTabbedPage();
+                tabbedModal.TabbedPage = new TabbedPage();
             //add modals to tabbed page
             foreach (var modal in tabbedModal.Modals)
             {

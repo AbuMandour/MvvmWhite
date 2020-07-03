@@ -28,9 +28,8 @@ namespace WhiteMvvm.Bases
             get => _isRefreshing;
             set { _isRefreshing = value; OnPropertyChanged(); }
         }
-
         private object NavigationData { get; set; }
-        public BaseViewModel()
+        protected BaseViewModel()
         {
             DialogService = LocatorService.Instance.Resolve<IDialogService>();
             NavigationService = LocatorService.Instance.Resolve<INavigationService>();
@@ -78,7 +77,7 @@ namespace WhiteMvvm.Bases
         {
             return Task.CompletedTask;
         }
-        protected internal virtual Task OnAppearing(object view)
+        protected virtual Task OnAppearing(object view)
         {
             return Task.CompletedTask;
         }

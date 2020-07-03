@@ -34,19 +34,18 @@ namespace WhiteMvvm.Bases
         private static void AppearingIterateChildren(IElementController content)
         {
             var children = content?.LogicalChildren;
-            if (children != null)
+            if (children == null)
+                return;
+            foreach (var child in children)
             {
-                foreach (var child in children)
+                if (child.GetType().IsSubclassOf(typeof(BaseContentView)))
                 {
-                    if (child.GetType().IsSubclassOf(typeof(BaseContentView)))
-                    {
-                        var baseContentView = child as BaseContentView;
-                        baseContentView?.OnAppearing();
-                    }
-                    else
-                    {
-                        AppearingIterateChildren(child);
-                    }
+                    var baseContentView = child as BaseContentView;
+                    baseContentView?.OnAppearing();
+                }
+                else
+                {
+                    AppearingIterateChildren(child);
                 }
             }
         }

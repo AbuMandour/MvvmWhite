@@ -16,7 +16,7 @@ namespace WhiteMvvm.Bases
         /// <typeparam name="TModel"></typeparam>
         /// <typeparam name="TTransitional"></typeparam>
         /// <returns></returns>
-        public TModel ToModel<TTransitional, TModel>(Func<TTransitional, TModel> mapping) where TModel : BaseModel, new() where TTransitional : BaseTransitional, new()
+        public TModel ToModel<TTransitional, TModel>(Func<TTransitional?, TModel> mapping) where TModel : BaseModel, new() where TTransitional : BaseTransitional, new()
         {
             var model = mapping.Invoke(this as TTransitional);
             return model;

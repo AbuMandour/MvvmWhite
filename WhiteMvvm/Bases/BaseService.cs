@@ -12,7 +12,7 @@ namespace WhiteMvvm.Bases
     public class BaseService
     {
         protected ILoggerService LoggerService;
-        public BaseService()
+        protected BaseService()
         {
             LoggerService = LocatorService.Instance.Resolve<ILoggerService>();            
         }
