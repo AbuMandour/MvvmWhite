@@ -61,10 +61,23 @@ namespace WhiteMvvm.Extensions
                     screenCoordinateY += parent.Y;
 
                     // If the parent of this parent isn't the app itself, get the parent's parent.
-                    if (parent.Parent.GetType() == typeof(Xamarin.Forms.Application))
+                    
+                    /*if (parent.Parent.GetType() == typeof(Xamarin.Forms.Application))
                         parent = null;
                     else
+                    {
+                        var perent = parent.Parent;
                         parent = (VisualElement) parent.Parent;
+                    }*/
+
+                    if (parent.Parent is VisualElement parentAsElement)
+                    {
+                        parent = parentAsElement;
+                    }
+                    else
+                    {
+                        parent = null;
+                    }
                 }
             }
             // Return the final coordinates...which are the global SCREEN coordinates of the view
