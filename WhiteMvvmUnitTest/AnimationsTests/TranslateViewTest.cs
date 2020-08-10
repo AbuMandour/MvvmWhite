@@ -23,7 +23,7 @@ namespace WhiteMvvmUnitTest.AnimationsTest
             var beforeLocation = WhiteMvvm.Animations.Animation.GetTranslate(label);
             var translateParameters = new TranslateParameters(xValue, 0, 100);
             //act 
-            WhiteMvvm.Animations.Animation.SetTranslate(label,translateParameters);
+            Animation.SetTranslate(label,translateParameters);
             var afterLocation = WhiteMvvm.Animations.Animation.GetTranslate(label);
             var diff = afterLocation.X - beforeLocation.X;
             //assert

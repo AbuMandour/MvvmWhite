@@ -10,7 +10,7 @@ namespace WhiteMvvm.Services.Navigation
     {
         public NavigationPage NavigationPage { get; set; }
         public IModal RootModal{ get; set; }
-        public object Parameter { get; set; }
+        public object NavigationParameter { get; set; }
         public string Name { get; set; }
     }
 }

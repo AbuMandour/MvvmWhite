@@ -16,72 +16,45 @@ namespace WhiteMvvm.Services.Api
 {
     public class ApiService : IApiService
     {
-        private readonly HttpClient _httpClient = new HttpClient(new HttpClientHandler()
-        {
-            // Proxy = new WebProxy
-            // {
-            //     Address = new Uri($"http://192.3.70.92:60000"),
-            //     UseDefaultCredentials = false,
-            //     Credentials = new NetworkCredential(
-            //         userName: "alarabyaljadeed",
-            //         password: "VhXAvg6hBG")
-            // },
-            // UseProxy = true
-        });
+        private readonly HttpClient _httpClient = new HttpClient();
         private readonly JsonSerializer _serializer = new JsonSerializer();
         public async Task<TBaseTransitional> Get<TBaseTransitional>(string uri, Dictionary<string, string> headers = null) where TBaseTransitional : BaseTransitional
         {
-            try
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            if (headers != null)
             {
-                _httpClient.DefaultRequestHeaders.Accept.Clear();
-                if (headers != null)
+                foreach (var header in headers)
                 {
-                    foreach (var header in headers)
-                    {
-                        _httpClient.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
-                    }
-                }
-                var response = await _httpClient.GetAsync(uri);
-                response.EnsureSuccessStatusCode();
-                using (var stream = await response.Content.ReadAsStreamAsync())
-                using (var reader = new StreamReader(stream))
-                using (var json = new JsonTextReader(reader))
-                {
-                    return _serializer.Deserialize<TBaseTransitional>(json);
+                    _httpClient.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
                 }
             }
-            catch (Exception ex)
+            var response = await _httpClient.GetAsync(uri);
+            response.EnsureSuccessStatusCode();
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            using (var reader = new StreamReader(stream))
+            using (var json = new JsonTextReader(reader))
             {
-                Console.WriteLine(ex);
-                throw;
+                return _serializer.Deserialize<TBaseTransitional>(json);
             }
         }
         public async Task<List<TBaseTransitional>> GetList<TBaseTransitional>(string uri, Dictionary<string, string> headers = null) where TBaseTransitional : BaseTransitional, new()
         {
-            try
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            if (headers != null)
             {
-                _httpClient.DefaultRequestHeaders.Accept.Clear();
-                if (headers != null)
+                foreach (var header in headers)
                 {
-                    foreach (var header in headers)
-                    {
-                        _httpClient.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
-                    }
-                }
-                var response = await _httpClient.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
-                response.EnsureSuccessStatusCode();
-                using (var stream = await response.Content.ReadAsStreamAsync())
-                using (var reader = new StreamReader(stream))
-                using (var json = new JsonTextReader(reader))
-                {
-                    var list = _serializer.Deserialize<List<TBaseTransitional>>(json);
-                    return list;
+                    _httpClient.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
                 }
             }
-            catch (Exception e)
+            var response = await _httpClient.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            using (var reader = new StreamReader(stream))
+            using (var json = new JsonTextReader(reader))
             {
-                Console.WriteLine(e);
-                throw;
+                var list = _serializer.Deserialize<List<TBaseTransitional>>(json);
+                return list;
             }
         }
         public async Task<TResponse> Post<TResponse, TRequest>(TRequest entity, string contentType, string uri, Dictionary<string, string> headers = null) where TRequest : BaseTransitional

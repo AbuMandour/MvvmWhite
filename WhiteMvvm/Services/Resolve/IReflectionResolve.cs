@@ -6,7 +6,7 @@ namespace WhiteMvvm.Services.Resolve
 {
     public interface IReflectionResolve
     {
-        BaseViewModel CreateViewModelFromPage(Type pageType);
+        BaseViewModel CreateViewModel(Type pageType);
         Page CreatePage(Type viewModelType);
     }
 }

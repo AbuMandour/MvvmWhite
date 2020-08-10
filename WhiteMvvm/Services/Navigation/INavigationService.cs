@@ -10,9 +10,9 @@ namespace WhiteMvvm.Services.Navigation
     {        
         bool SetMasterPresentation(bool isPresent);
         Task PopModelAsync(object parameter = null);
-        Task PopAsync(object parameter = null);
-        void RemovePageFromNavigationModalAsync<TViewModel>() where TViewModel : BaseViewModel;
-        Task NavigateToAsync<TViewModel>(object parameter = null) where TViewModel : BaseViewModel;        
+        Task PopFromNavigationModelAsync(object parameter = null);
+        void RemoveFromNavigationModalAsync<TViewModel>() where TViewModel : BaseViewModel;
+        Task PushToNavigationModalAsync<TViewModel>(object parameter = null) where TViewModel : BaseViewModel;        
         Task<bool> ChangeDetail(IModal modal);
         Task PushModal(IModal modal);
         Task SetMainModal(IModal modal);

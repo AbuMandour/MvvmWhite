@@ -25,7 +25,7 @@ namespace WhiteMvvm.Services.Resolve
             var page = GetPageInstance(pageType);
             return page;
         }
-        public BaseViewModel CreateViewModelFromPage(Type pageType)
+        public BaseViewModel CreateViewModel(Type pageType)
         {
             try
             {

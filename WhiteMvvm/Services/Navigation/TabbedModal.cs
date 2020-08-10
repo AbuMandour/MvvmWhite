@@ -10,7 +10,7 @@ namespace WhiteMvvm.Services.Navigation
     {
         public TabbedPage TabbedPage { get; set; }
         public ICollection<IModal> Modals { get; set; }
-        public object Parameter { get; set; }
+        public object NavigationParameter { get; set; }
         public string Name { get; set; }
     }
 }

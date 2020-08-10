@@ -1,56 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using Xamarin.Forms;
 
 namespace WhiteMvvm.Behaviors.Base
 {
-    /// <summary>
-    /// base class to wire behavior to any view
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class BaseBehavior<T> :Behavior<T> where T : BindableObject
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public abstract class BaseBehavior : Behavior<View>
     {
-        public T AssociatedObject { get; private set; }
-        /// <summary>
-        /// override attached method to assign visual element to associated object and register OnBindingContextChanged event
-        /// </summary>
-        /// <param name="visualElement"></param>
-        protected override void OnAttachedTo(T visualElement)
-        {
-            base.OnAttachedTo(visualElement);
+        static readonly MethodInfo getContextMethod = typeof(BindableObject).GetRuntimeMethods()?.FirstOrDefault(m => m.Name == "GetContext");
 
-            AssociatedObject = visualElement;
+        static readonly FieldInfo bindingField = getContextMethod?.ReturnType.GetRuntimeField("Binding");
 
-            if (visualElement.BindingContext != null)
-                BindingContext = visualElement.BindingContext;
+        BindingBase defaultBindingContextBinding;
 
-            visualElement.BindingContextChanged += OnBindingContextChanged;
-        }
-        /// <summary>
-        /// OnBindingContextChanged event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnBindingContextChanged(object sender, EventArgs e)
+        protected View View { get; private set; }
+
+        protected virtual void OnViewPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            OnBindingContextChanged();
         }
-        /// <summary>
-        /// override OnDetaching to un register from view
-        /// </summary>
-        /// <param name="view"></param>
-        protected override void OnDetachingFrom(T view)
+
+        protected override void OnAttachedTo(View bindable)
         {
-            view.BindingContextChanged -= OnBindingContextChanged;
+            base.OnAttachedTo(bindable);
+            View = bindable;
+            bindable.PropertyChanged += OnViewPropertyChanged;
+
+            if (!IsBound(BindingContextProperty))
+            {
+                defaultBindingContextBinding = new Binding
+                {
+                    Path = BindingContextProperty.PropertyName,
+                    Source = bindable
+                };
+                SetBinding(BindingContextProperty, defaultBindingContextBinding);
+            }
         }
-        /// <summary>
-        /// override OnBindingContextChanged to assign binding context of associated object to binding context of view
-        /// </summary>
-        protected override void OnBindingContextChanged()
+
+        protected override void OnDetachingFrom(BindableObject bindable)
         {
-            base.OnBindingContextChanged();
-            BindingContext = AssociatedObject.BindingContext;
+            base.OnDetachingFrom(bindable);
+
+            if (defaultBindingContextBinding != null)
+            {
+                RemoveBinding(BindingContextProperty);
+                defaultBindingContextBinding = null;
+            }
+
+            bindable.PropertyChanged -= OnViewPropertyChanged;
+            View = null;
+        }
+
+        protected bool IsBound(BindableProperty property, BindingBase defaultBinding = null)
+        {
+            var context = getContextMethod?.Invoke(this, new object[] { property });
+            return context != null
+                   && bindingField?.GetValue(context) is BindingBase binding
+                   && binding != defaultBinding;
         }
     }
 }

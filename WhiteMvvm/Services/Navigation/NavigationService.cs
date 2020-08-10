@@ -55,7 +55,7 @@ namespace WhiteMvvm.Services.Navigation
             var currentViewModel = GetCurrentViewModel();
             await currentViewModel.OnNavigateFrom(previousViewModel, parameter);
         }
-        public async Task PopAsync(object parameter = null)
+        public async Task PopFromNavigationModelAsync(object parameter = null)
         {
             var previousViewModel = GetCurrentViewModel();
             previousViewModel.CleanUp();
@@ -66,19 +66,19 @@ namespace WhiteMvvm.Services.Navigation
             var currentViewModel = GetCurrentViewModel();
             await currentViewModel.OnNavigateFrom(previousViewModel, parameter);
         }
-        public void RemovePageFromNavigationModalAsync<TViewModel>() where TViewModel : BaseViewModel
+        public void RemoveFromNavigationModalAsync<TViewModel>() where TViewModel : BaseViewModel
         {
             var page = _resolve.CreatePage(typeof(TViewModel));
             Navigation.RemovePage(page);
         }
-        public async Task NavigateToAsync<TViewModel>(object parameter = null) where TViewModel : BaseViewModel
+        public async Task PushToNavigationModalAsync<TViewModel>(object parameter = null) where TViewModel : BaseViewModel
         {
             try
             {
                 var page = _resolve.CreatePage(typeof(TViewModel));
                 if (page != null)
                 {
-                    var viewModel = _resolve.CreateViewModelFromPage(page.GetType());
+                    var viewModel = _resolve.CreateViewModel(page.GetType());
                     page.BindingContext = viewModel;
                     var navigationPage = GetLastNavigationPage(null);
                     if (navigationPage != null)
@@ -272,7 +272,7 @@ namespace WhiteMvvm.Services.Navigation
             var basicViewModel = basicModal.ViewModel;
             var basicPage = _resolve.CreatePage(basicViewModel.GetType());
             basicPage.BindingContext = basicViewModel;
-            basicViewModel.InternalInitialize(basicModal.Parameter).SafeFireAndForget();
+            basicViewModel.InternalInitialize(basicModal.NavigationParameter).SafeFireAndForget();
             return basicPage;
         }
         private async Task<Page> SetNavigationPageAsync(NavigationModal navigationModal)

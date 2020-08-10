@@ -31,4 +31,8 @@
       <None Remove="obj\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ConvertersTests" />
+    </ItemGroup>
+
 </Project>
