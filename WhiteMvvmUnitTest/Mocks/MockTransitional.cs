@@ -1,8 +1,8 @@
 using WhiteMvvm.Bases;
 
-namespace WhiteMvvmUnitTest.BasesTest
+namespace WhiteMvvmUnitTest.Mocks
 {
-    public class TestableTransitional : BaseTransitional
+    public class MockTransitional : BaseTransitional
     {
         public string ExternalTitle { get; set; }
     }

@@ -1,13 +1,14 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace WhiteMvvm.Behaviors
 {
     public class ConfirmPasswordBehavior : Behavior<Entry>
     {
-        private static readonly BindablePropertyKey IsNotValidPropertyKey =
-            BindableProperty.CreateReadOnly("IsNotValid",
+        private static readonly BindablePropertyKey IsSamePasswordPropertyKey =
+            BindableProperty.CreateReadOnly("IsSamePassword",
                 typeof(bool), typeof(ConfirmPasswordBehavior), false);
-        public static readonly BindableProperty IsNotValidProperty = IsNotValidPropertyKey.BindableProperty;
+        public static readonly BindableProperty IsSamePasswordProperty = IsSamePasswordPropertyKey.BindableProperty;
 
         public static readonly BindableProperty CompareToTextProperty =
             BindableProperty.Create("CompareToText", typeof(string),
@@ -18,10 +19,10 @@ namespace WhiteMvvm.Behaviors
             get => (string)base.GetValue(CompareToTextProperty);
             set => base.SetValue(CompareToTextProperty, value);
         }
-        public bool IsNotValid
+        public bool IsSamePassword
         {
-            get => (bool)base.GetValue(IsNotValidProperty);
-            private set => base.SetValue(IsNotValidPropertyKey, value);
+            get => (bool)base.GetValue(IsSamePasswordProperty);
+            private set => base.SetValue(IsSamePasswordPropertyKey, value);
         }
         protected override void OnAttachedTo(Entry bindable)
         {
@@ -40,10 +41,10 @@ namespace WhiteMvvm.Behaviors
             string confirmPassword = e.NewTextValue;
             if (string.IsNullOrEmpty(password))
             {
-                IsNotValid = false;
+                IsSamePassword = false;
                 return;
             }
-            IsNotValid = !password.Equals(confirmPassword);
+            IsSamePassword = password.Equals(confirmPassword);
         }
     }
 }

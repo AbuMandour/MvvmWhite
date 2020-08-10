@@ -1,21 +1,22 @@
 using NUnit.Framework;
+using WhiteMvvmUnitTest.Mocks;
 
 namespace WhiteMvvmUnitTest.BasesTest
 {
     public class BaseTransitionalTest
     {
-        private TestableTransitional _transitional;
+        private MockTransitional _transitional;
 
         [SetUp]
         public void Setup()
         {
-            _transitional = new TestableTransitional();
+            _transitional = new MockTransitional();
         }
 
         [Test]
         public void TestMappingFromTransitionalToModel()
         {
-          var resultModel =  _transitional.ToModel<TestableTransitional, TestableModel>(transitional => new TestableModel()
+          var resultModel =  _transitional.ToModel<MockTransitional, MockModel>(transitional => new MockModel()
           {
               Title = transitional?.ExternalTitle
           });

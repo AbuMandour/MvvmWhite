@@ -1,8 +1,8 @@
 using WhiteMvvm.Bases;
 
-namespace WhiteMvvmUnitTest.BasesTest
+namespace WhiteMvvmUnitTest.Mocks
 {
-    public class TestableModel : BaseModel
+    public class MockModel : BaseModel
     {
         public string Title { get; set; }
     }
