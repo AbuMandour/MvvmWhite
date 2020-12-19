@@ -27,7 +27,8 @@ namespace WhiteMvvm.Services.Locator
                 return new LocatorService();
             }
         }
-        public void RegisterBaseService()
+
+        private void RegisterBaseService()
         {
             _container.RegisterType<INavigationService, NavigationService>(new ContainerControlledLifetimeManager());
             _container.RegisterType<IDialogService, DialogService>(new ContainerControlledLifetimeManager());

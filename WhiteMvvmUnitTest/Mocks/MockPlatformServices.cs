@@ -10,6 +10,8 @@ namespace WhiteMvvmUnitTest.Mocks
 {
     public class MockPlatformServices : IPlatformServices
     {
+        public string GetHash(string input) => string.Empty;
+ 
         public string GetMD5Hash(string input)
             => string.Empty;
 
