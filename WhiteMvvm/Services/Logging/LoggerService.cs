@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AppCenter.Crashes;
 using WhiteMvvm.Services.Dialog;
 using WhiteMvvm.Utilities;
+using Xamarin.Forms;
 
 namespace WhiteMvvm.Services.Logging
 {
@@ -17,31 +18,38 @@ namespace WhiteMvvm.Services.Logging
         {
             _dialogService = dialogService;
         }
+
         public Task LogException(Exception exception)
         {
 #if DEBUG
-            Console.WriteLine(exception.ToString());
+            System.Diagnostics.Debug.WriteLine(exception.ToString());
             return _dialogService.ShowErrorAsync(exception.ToString());
 #endif
             Crashes.TrackError(exception);
             return Task.CompletedTask;
         }
 
-        public T Benchmark<T>(Func<T> function, string message)
+        public T Benchmark<T>(Func<T> function, string message = "duration: ", bool withPopup = true)
         {
             var sw = Stopwatch.StartNew();
             var result = function.Invoke();
             sw.Stop();
-            _dialogService.ShowErrorAsync($"{message}: {sw.ElapsedMilliseconds} milliseconds");
+            var durationMessage = $"{message}: {sw.ElapsedMilliseconds} milliseconds";
+            if (withPopup)
+                _dialogService.ShowErrorAsync(durationMessage);
+            System.Diagnostics.Debug.WriteLine(durationMessage);
             return result;
         }
 
-        public void Benchmark(Action function, string message)
+        public void Benchmark(Action function, string message = "duration: ", bool withPopup = true)
         {
             var sw = Stopwatch.StartNew();
             function.Invoke();
             sw.Stop();
-            _dialogService.ShowErrorAsync($"{message}: {sw.ElapsedMilliseconds} milliseconds");
+            var durationMessage = $"{message}: {sw.ElapsedMilliseconds} milliseconds";
+            if (withPopup)
+                _dialogService.ShowErrorAsync(durationMessage);
+            System.Diagnostics.Debug.WriteLine(durationMessage);
         }
     }
 }
