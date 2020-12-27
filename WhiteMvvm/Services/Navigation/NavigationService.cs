@@ -110,7 +110,7 @@ namespace WhiteMvvm.Services.Navigation
                     masterDetailPage.Detail = navigationPage;
                     return true;
                 case BasicModal basicModal:
-                    var basicPage = SetBasicPageAsync(basicModal);
+                    var basicPage = SetBasicPage(basicModal);
                     masterDetailPage.Detail = basicPage;
                     return true;
                 case TabbedModal tabbedModal:
@@ -256,7 +256,7 @@ namespace WhiteMvvm.Services.Navigation
             switch (modal)
             {
                 case BasicModal basicModal:
-                    return Task.FromResult(SetBasicPageAsync(basicModal));
+                    return Task.FromResult(SetBasicPage(basicModal));
                 case NavigationModal navigationModal:
                     return SetNavigationPageAsync(navigationModal);
                 case TabbedModal tabbedModal:
@@ -267,7 +267,7 @@ namespace WhiteMvvm.Services.Navigation
                     throw new NavigationException("Navigation service doesn't support given modal");
             }
         }
-        private Page SetBasicPageAsync(BasicModal basicModal)
+        private Page SetBasicPage(BasicModal basicModal)
         {
             var basicViewModel = basicModal.ViewModel;
             var basicPage = _resolve.CreatePage(basicViewModel.GetType());
@@ -281,7 +281,7 @@ namespace WhiteMvvm.Services.Navigation
             switch (navigationModal.RootModal)
             {
                 case BasicModal basicModal:
-                    rootPage = SetBasicPageAsync(basicModal);
+                    rootPage = SetBasicPage(basicModal);
                     break;
                 case TabbedModal tabbedModal:
                     rootPage = await SetTabbedPageToMasterDetailAsync(tabbedModal);
@@ -310,7 +310,7 @@ namespace WhiteMvvm.Services.Navigation
                     masterDetailModal.MasterDetailPage.Detail = navigationPage;
                     break;
                 case BasicModal basicModal:
-                    var basicPage = SetBasicPageAsync(basicModal);
+                    var basicPage = SetBasicPage(basicModal);
                     masterDetailModal.MasterDetailPage.Detail = basicPage;
                     break;
                 case TabbedModal tabbedModal:
@@ -323,9 +323,9 @@ namespace WhiteMvvm.Services.Navigation
             //set master
             if (masterDetailModal.MasterModal is BasicModal masterModal)
             {
-                var masterPage = SetBasicPageAsync(masterModal);
+                var masterPage = SetBasicPage(masterModal);
                 // check on title in master page
-                if (string.IsNullOrEmpty(masterPage.Title) && Device.RuntimePlatform == Device.Android)
+                if (string.IsNullOrEmpty(masterPage.Title))
                     masterPage.Title = "master page";
                 masterDetailModal.MasterDetailPage.Master = masterPage;
                 // set modal in navigation stack
@@ -347,7 +347,7 @@ namespace WhiteMvvm.Services.Navigation
                 switch (modal)
                 {
                     case BasicModal basicModal:
-                        var basicPage = SetBasicPageAsync(basicModal);
+                        var basicPage = SetBasicPage(basicModal);
                         tabbedModal.TabbedPage.Children.Add(basicPage);
                         break;
                     case NavigationModal navigationModal:
@@ -379,7 +379,7 @@ namespace WhiteMvvm.Services.Navigation
                 switch (modal)
                 {
                     case BasicModal basicModal:
-                        var basicPage = SetBasicPageAsync(basicModal);
+                        var basicPage = SetBasicPage(basicModal);
                         tabbedModal.TabbedPage.Children.Add(basicPage);
                         break;
                     case NavigationModal navigationModal:
@@ -405,7 +405,7 @@ namespace WhiteMvvm.Services.Navigation
                     masterDetailModal.MasterDetailPage.Detail = internalNavigationPage;
                     break;
                 case BasicModal basicModal:
-                    var internalBasicPage = SetBasicPageAsync(basicModal);
+                    var internalBasicPage = SetBasicPage(basicModal);
                     masterDetailModal.MasterDetailPage.Detail = internalBasicPage;
                     break;
                 default:
@@ -414,9 +414,9 @@ namespace WhiteMvvm.Services.Navigation
             //set master
             //ToDo Check for not basic modal
             var masterModel = (BasicModal)masterDetailModal.MasterModal;
-            var masterPage = SetBasicPageAsync(masterModel);
+            var masterPage = SetBasicPage(masterModel);
             // check on title in master page
-            if (string.IsNullOrEmpty(masterPage.Title) && Device.RuntimePlatform == Device.Android)
+            if (string.IsNullOrEmpty(masterPage.Title))
                 masterPage.Title = "master page";
             masterDetailModal.MasterDetailPage.Master = masterPage;
             return masterDetailModal.MasterDetailPage;

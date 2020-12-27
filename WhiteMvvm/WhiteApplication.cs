@@ -15,7 +15,7 @@ namespace WhiteMvvm
 {
     public class WhiteApplication : Application
     {
-        private static INavigationService _navigationService;
+        private static INavigationService? _navigationService;
         public WhiteApplication()
         {
 
@@ -26,10 +26,10 @@ namespace WhiteMvvm
         /// </summary>
         /// <param name="modal"></param>
         /// <returns></returns>
-        public static void SetHomePage(IModal modal)
+        protected static void SetHomePage(IModal modal)
         {
             _navigationService = LocatorService.Instance.Resolve<INavigationService>();
-            _navigationService.SetMainModal(modal);
+            _navigationService.SetMainModal(modal).SafeFireAndForget(true);
         }
 
     }

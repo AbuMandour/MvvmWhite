@@ -62,13 +62,14 @@ namespace WhiteMvvm.Services.Resolve
             var fileAssemblyName = string.Format(CultureInfo.InvariantCulture, "{0}, {1}", fileFullName, assemblyName);
 
             var newType = Type.GetType(fileAssemblyName);
+
             return newType;
         }
         private static Page GetPageInstance(Type pageType)
         {
             if (pageType == null)
             {
-                throw new ReflectionResolveException($"Cannot locate page type", new NullReferenceException($"page type can not be null"));
+                throw new ReflectionResolveException($"Cannot locate page type");
             }
             var page = Activator.CreateInstance(pageType);
             return page as Page;
@@ -77,7 +78,7 @@ namespace WhiteMvvm.Services.Resolve
         {
             if (viewModelType == null)
             {
-                throw new ReflectionResolveException($"Cannot locate view model type", new NullReferenceException("view model type can not be null"));
+                throw new ReflectionResolveException($"Cannot locate view model type");
             }
             var viewModel = LocatorService.Instance.Resolve(viewModelType) as BaseViewModel;
             return viewModel;
