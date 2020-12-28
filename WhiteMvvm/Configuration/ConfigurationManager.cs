@@ -6,11 +6,11 @@ namespace WhiteMvvm.Configuration
     public sealed class ConfigurationManager
     {
         private static readonly Lazy<ConfigurationManager> Lazy = new Lazy<ConfigurationManager>(() => new ConfigurationManager());
-        private string _viewsFolderName;
-        private string _viewModelFolderName;
-        private string _viewsFileName;
-        private string _loadingDisplay;
-        private string _viewModelFileName;
+        private string _viewsFolderName = null!;
+        private string _viewModelFolderName = null!;
+        private string _viewsFileName = null!;
+        private string _loadingDisplay = null!;
+        private string _viewModelFileName = null!;
 
 
         public static ConfigurationManager Current => Lazy.Value;

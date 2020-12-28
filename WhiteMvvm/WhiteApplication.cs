@@ -16,7 +16,8 @@ namespace WhiteMvvm
     public class WhiteApplication : Application
     {
         private static INavigationService? _navigationService;
-        public WhiteApplication()
+
+        protected WhiteApplication()
         {
 
         }
