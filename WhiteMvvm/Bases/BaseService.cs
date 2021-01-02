@@ -17,7 +17,7 @@ namespace WhiteMvvm.Bases
         {
             LoggerService = LocatorService.Instance.Resolve<ILoggerService>();            
         }
-
+        protected static bool IsArabic => LocalizationService.Current.CurrentLanguage == Language.Arabic;
         protected static Language CurrentLanguage => LocalizationService.Current.CurrentLanguage;
     }
 }
