@@ -23,7 +23,9 @@ namespace WhiteMvvm.Services.Logging
         {
 #if DEBUG
             System.Diagnostics.Debug.WriteLine(exception.ToString());
-            return _dialogService.ShowErrorAsync(exception.ToString());
+            var message = "";
+            message = !string.IsNullOrEmpty(exception.Message) ? exception.Message : "exception without message";
+            return _dialogService.ShowErrorAsync(message);
 #endif
             Crashes.TrackError(exception);
             return Task.CompletedTask;
