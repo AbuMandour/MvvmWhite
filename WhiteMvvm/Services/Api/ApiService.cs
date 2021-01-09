@@ -16,10 +16,13 @@ namespace WhiteMvvm.Services.Api
 {
     public class ApiService : IApiService
     {
-        private readonly HttpClient _httpClient = new HttpClient();
+        private  HttpClient _httpClient = new HttpClient();
         private readonly JsonSerializer _serializer = new JsonSerializer();
         public async Task<TBaseTransitional> Get<TBaseTransitional>(string uri, Dictionary<string, string> headers = null) where TBaseTransitional : BaseTransitional
         {
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (sender, certificate, chain, errors) => true;
+            _httpClient = new HttpClient(handler);
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             if (headers != null)
             {
