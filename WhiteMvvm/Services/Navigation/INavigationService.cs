@@ -7,16 +7,16 @@ using Xamarin.Forms;
 namespace WhiteMvvm.Services.Navigation
 {
     public interface INavigationService
-    {        
-        bool SetMasterPresentation(bool isPresent);
+    {
+        Task SetMainModalAsync(IModal modal);
+        Task PushModalAsync(IModal modal);
         Task PopModelAsync(object parameter = null);
         Task PopFromNavigationModelAsync(object parameter = null);
         void RemoveFromNavigationModalAsync<TViewModel>() where TViewModel : BaseViewModel;
         Task PushToNavigationModalAsync<TViewModel>(object parameter = null) where TViewModel : BaseViewModel;        
-        Task<bool> ChangeDetail(IModal modal);
-        Task PushModal(IModal modal);
-        Task SetMainModal(IModal modal);
+        Task<bool> ChangeDetailAsync(IModal modal);
+        bool SetMasterPresentation(bool isPresent);
         void ChangeCurrentTabbedModal<TBaseViewModel>() where TBaseViewModel : BaseViewModel;
-        TabbedPage CurrentTabbedPage { get;}
+        TabbedPage CurrentTabbedPage { get; }
     }
 }

@@ -30,7 +30,7 @@ namespace WhiteMvvm
         protected static void SetHomePage(IModal modal)
         {
             _navigationService = LocatorService.Instance.Resolve<INavigationService>();
-            _navigationService.SetMainModal(modal).SafeFireAndForget(true);
+            _navigationService.SetMainModalAsync(modal).SafeFireAndForget(true);
         }
 
     }

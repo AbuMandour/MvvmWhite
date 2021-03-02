@@ -21,12 +21,15 @@ namespace WhiteMvvm.Services.Navigation
     public class NavigationService : INavigationService
     {
         private readonly IReflectionResolve _resolve;
-        private readonly ILoggerService _loggerService;
-        private static INavigation Navigation => Application.Current.MainPage?.Navigation;
-        public NavigationService(IReflectionResolve resolve, ILoggerService loggerService)
+        public async Task SetMainModalAsync(IModal modal)
+        {
+            var page = await GetPageFromModal(modal);
+            Application.Current.MainPage = page;
+        }
+        private static INavigation? Navigation => Application.Current.MainPage?.Navigation;
+        public NavigationService(IReflectionResolve resolve)
         {
             _resolve = resolve;
-            _loggerService = loggerService;
         }
         public bool SetMasterPresentation(bool isPresent)
         {
@@ -94,7 +97,7 @@ namespace WhiteMvvm.Services.Navigation
                 throw new NavigationException("Error while push page", navigationException);
             }
         }
-        public async Task<bool> ChangeDetail(IModal modal)
+        public async Task<bool> ChangeDetailAsync(IModal modal)
         {
             if (Application.Current.MainPage == null)
                 return false;
@@ -121,15 +124,10 @@ namespace WhiteMvvm.Services.Navigation
                     return false;
             }
         }
-        public async Task PushModal(IModal modal)
+        public async Task PushModalAsync(IModal modal)
         {
             var page = await GetPageFromModal(modal);
             await PushModalGlobal(page);
-        }
-        public async Task SetMainModal(IModal modal)
-        {
-            var page = await GetPageFromModal(modal);
-            Application.Current.MainPage = page;
         }
         public void ChangeCurrentTabbedModal<TBaseViewModel>() where TBaseViewModel : BaseViewModel
         {
@@ -292,8 +290,6 @@ namespace WhiteMvvm.Services.Navigation
                 default:
                     throw new NavigationException("Tabbed page doesn't support given modal type at this level");
             }
-            if (navigationModal.NavigationPage == null)
-                navigationModal.NavigationPage = new NavigationPage();
             await navigationModal.NavigationPage.PushAsync(rootPage);
             return navigationModal.NavigationPage;
         }
