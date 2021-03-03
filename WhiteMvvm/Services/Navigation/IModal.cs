@@ -6,7 +6,7 @@ namespace WhiteMvvm.Services.Navigation
 {
     public interface IModal
     {
-        object NavigationParameter { get; set; }
-        string Name { get; set; }
+        object? NavigationParameter { get; set; }
+        string? Name { get; set; }
     }
 }

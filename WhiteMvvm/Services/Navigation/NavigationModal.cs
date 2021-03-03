@@ -8,9 +8,9 @@ namespace WhiteMvvm.Services.Navigation
 {
     public class NavigationModal : IModal
     {
-        public NavigationPage NavigationPage { get; set; }
+        public NavigationPage NavigationPage { get; set; } = new NavigationPage();
         public IModal RootModal{ get; set; }
-        public object NavigationParameter { get; set; }
-        public string Name { get; set; }
+        public object? NavigationParameter { get; set; }
+        public string? Name { get; set; }
     }
 }

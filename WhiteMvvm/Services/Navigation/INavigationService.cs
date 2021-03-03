@@ -17,6 +17,6 @@ namespace WhiteMvvm.Services.Navigation
         Task<bool> ChangeDetailAsync(IModal modal);
         bool SetMasterPresentation(bool isPresent);
         void ChangeCurrentTabbedModal<TBaseViewModel>() where TBaseViewModel : BaseViewModel;
-        TabbedPage CurrentTabbedPage { get; }
+        TabbedPage? CurrentTabbedPage { get; }
     }
 }

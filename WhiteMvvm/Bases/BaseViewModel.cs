@@ -42,7 +42,7 @@ namespace WhiteMvvm.Bases
             _isOnAppeared = false;
             _isInitialize = false;
         }
-        protected internal virtual Task OnNavigateFrom(BaseViewModel page, object parameter)
+        protected internal virtual Task OnNavigateFrom(BaseViewModel? page, object? parameter)
         {
             return Task.CompletedTask;
         }
@@ -95,7 +95,7 @@ namespace WhiteMvvm.Bases
             NavigationData = navigationData;
             return Task.CompletedTask;
         }
-        internal async Task InternalInitialize(object navigationData)
+        internal async Task InternalInitialize(object? navigationData)
         {
             await InitializeVolatileAsync(navigationData);
                 

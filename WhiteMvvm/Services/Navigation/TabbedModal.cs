@@ -8,9 +8,9 @@ namespace WhiteMvvm.Services.Navigation
 {
     public class TabbedModal : IModal   
     {
-        public TabbedPage TabbedPage { get; set; }
+        public TabbedPage TabbedPage { get; set; } = new TabbedPage();
         public ICollection<IModal> Modals { get; set; }
-        public object NavigationParameter { get; set; }
-        public string Name { get; set; }
+        public object? NavigationParameter { get; set; }
+        public string? Name { get; set; }
     }
 }

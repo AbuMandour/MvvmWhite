@@ -8,7 +8,7 @@ namespace WhiteMvvm.Services.Navigation
     public class BasicModal : IModal
     {
         public BaseViewModel ViewModel { get; set; }
-        public object NavigationParameter { get; set; }
-        public string Name { get; set; }
+        public object? NavigationParameter { get; set; }
+        public string? Name { get; set; }
     }
 }
