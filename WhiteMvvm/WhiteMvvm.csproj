@@ -37,4 +37,11 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="WeakEventManager\EventManagerService.cs" />
+    <Compile Remove="WeakEventManager\WeakEventManager.cs" />
+    <Compile Remove="WeakEventManager\Subscription.cs" />
+    <Compile Remove="Utilities\TaskCommand.cs" />
+    <Compile Remove="Utilities\TaskValueCommand.cs" />
+  </ItemGroup>
 </Project>
