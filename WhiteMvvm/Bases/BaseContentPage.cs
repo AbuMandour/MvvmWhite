@@ -1,8 +1,7 @@
-﻿using WhiteMvvm.Utilities;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using NavigationPage = Xamarin.Forms.NavigationPage;
-
+using AsyncAwaitBestPractices;
 
 namespace WhiteMvvm.Bases
 {

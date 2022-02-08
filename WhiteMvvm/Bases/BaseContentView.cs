@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WhiteMvvm.Services.Locator;
-using WhiteMvvm.Services.Resolve;
-using WhiteMvvm.Utilities;
+﻿using AsyncAwaitBestPractices;
 using Xamarin.Forms;
 
 namespace WhiteMvvm.Bases

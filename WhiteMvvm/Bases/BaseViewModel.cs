@@ -6,12 +6,13 @@ using WhiteMvvm.Services.Dialog;
 using WhiteMvvm.Services.Locator;
 using WhiteMvvm.Services.Logging;
 using WhiteMvvm.Services.Navigation;
-using WhiteMvvm.Utilities;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
+using AsyncAwaitBestPractices;
 
 namespace WhiteMvvm.Bases
 {
-    public class BaseViewModel : NotifiedObject
+    public class BaseViewModel : ObservableObject
     {
         protected readonly IDialogService DialogService;
         protected readonly INavigationService NavigationService;
@@ -26,7 +27,7 @@ namespace WhiteMvvm.Bases
         public bool IsRefreshing
         {
             get => _isRefreshing;
-            set { _isRefreshing = value; OnPropertyChanged(); }
+            set => SetProperty(ref _isRefreshing, value);
         }
         private object NavigationData { get; set; }
         protected BaseViewModel()
@@ -64,8 +65,8 @@ namespace WhiteMvvm.Bases
                             DialogService.HideLoading();
                         }
                     }
-                    _isBusy = value;
-                    OnPropertyChanged();
+                    SetProperty(ref _isBusy, value);
+                    
                 });
             }
         }
@@ -109,7 +110,7 @@ namespace WhiteMvvm.Bases
             return Task.CompletedTask;
         }
         internal Task InternalOnAppear(object view)
-        {
+        {  
             OnAppearing(view).SafeFireAndForget();
             if (_isOnAppeared)
                 return Task.CompletedTask;

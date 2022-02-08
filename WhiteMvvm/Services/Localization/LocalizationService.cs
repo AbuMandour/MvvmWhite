@@ -4,12 +4,12 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Microsoft.AppCenter.Crashes;
 using WhiteMvvm.Services.Locator;
-using WhiteMvvm.Utilities;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace WhiteMvvm.Services.Localization
 {
-    public class LocalizationService : NotifiedObject
+    public class LocalizationService : ObservableObject
     {
         private static readonly Lazy<LocalizationService> Lazy = new Lazy<LocalizationService>(() => new LocalizationService());
         public static LocalizationService Current => Lazy.Value;
@@ -26,21 +26,15 @@ namespace WhiteMvvm.Services.Localization
                     return CultureInfo.CurrentCulture;
                 return _cultureInfo;
             }
-            set
-            {
-                _cultureInfo = value; 
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _cultureInfo, value);
+            
         }
 
         public FlowDirection AppFlowDirection
         {
             get => _appFlowDirection;
-            set
-            {
-                _appFlowDirection = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _appFlowDirection, value);
+           
         }
         public Language CurrentLanguage
         {

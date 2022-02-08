@@ -4,12 +4,12 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AsyncAwaitBestPractices;
 using WhiteMvvm.Bases;
 using WhiteMvvm.Configuration;
 using WhiteMvvm.Exceptions;
 using WhiteMvvm.Services.Logging;
 using WhiteMvvm.Services.Resolve;
-using WhiteMvvm.Utilities;
 using Xamarin.Forms;
 using TabbedPage = Xamarin.Forms.TabbedPage;
 

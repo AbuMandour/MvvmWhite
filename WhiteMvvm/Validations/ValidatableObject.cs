@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WhiteMvvm.Utilities;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace WhiteMvvm.Validations
 {
-    public class ValidatableObject<T> : NotifiedObject, IValidity
+    public class ValidatableObject<T> : ObservableObject, IValidity
     {
         private bool _isValid;
         private List<string> _errors;
@@ -17,13 +17,13 @@ namespace WhiteMvvm.Validations
         public List<string> Errors
         {
             get => _errors;
-            set { _errors = value; OnPropertyChanged();}
+            set => SetProperty(ref _errors, value);
         }
 
         public T Value
         {
             get => _value;
-            set { _value = value;OnPropertyChanged(); }
+            set => SetProperty(ref _value, value);
         }
 
         public bool IsValid { get; set; }

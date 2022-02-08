@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WhiteMvvm.Bases;
-using WhiteMvvm.Utilities;
 
 namespace WhiteMvvm.Services.Api
 {

@@ -26,9 +26,11 @@
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
     <PackageReference Include="SQLiteNetExtensions.Async" Version="2.1.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-    <PackageReference Include="Unity" Version="5.11.9" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
+    <PackageReference Include="Unity" Version="5.11.10" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.0" />
+    <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="6.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,5 +45,9 @@
     <Compile Remove="WeakEventManager\Subscription.cs" />
     <Compile Remove="Utilities\TaskCommand.cs" />
     <Compile Remove="Utilities\TaskValueCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Xamarin.CommunityToolkit" />
+    <None Remove="AsyncAwaitBestPractices.MVVM" />
   </ItemGroup>
 </Project>
