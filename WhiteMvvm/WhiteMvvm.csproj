@@ -45,6 +45,10 @@
     <Compile Remove="WeakEventManager\Subscription.cs" />
     <Compile Remove="Utilities\TaskCommand.cs" />
     <Compile Remove="Utilities\TaskValueCommand.cs" />
+    <Compile Remove="CustomControls\DragAndDrop\IDragAndDropMovingView.cs" />
+    <Compile Remove="CustomControls\DragAndDrop\IDragAndDropHoverableView.cs" />
+    <Compile Remove="CustomControls\DragAndDrop\IDragAndDropContainer.cs" />
+    <Compile Remove="CustomControls\DragAndDrop\IDragAndDropReceivingView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Xamarin.CommunityToolkit" />
