@@ -4,11 +4,10 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using SQLite;
-using WhiteMvvm.Utilities;
 
 namespace WhiteMvvm.Bases
 {
-    public class BaseModel : NotifiedObject
+    public class BaseModel 
     {
         public string Id { get; set; }
     }

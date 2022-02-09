@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AppCenter.Crashes;
 using WhiteMvvm.Services.Dialog;
-using WhiteMvvm.Utilities;
 using Xamarin.Forms;
 
 namespace WhiteMvvm.Services.Logging

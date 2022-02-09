@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AsyncAwaitBestPractices;
 using WhiteMvvm.Bases;
 using WhiteMvvm.Services.Locator;
 using WhiteMvvm.Services.Navigation;
 using WhiteMvvm.Services.Resolve;
-using WhiteMvvm.Utilities;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Application = Xamarin.Forms.Application;
@@ -30,7 +30,7 @@ namespace WhiteMvvm
         protected static void SetHomePage(IModal modal)
         {
             _navigationService = LocatorService.Instance.Resolve<INavigationService>();
-            _navigationService.SetMainModalAsync(modal).SafeFireAndForget(true);
+            _navigationService.SetMainModalAsync(modal).SafeFireAndForget();
         }
 
     }
