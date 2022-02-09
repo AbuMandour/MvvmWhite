@@ -48,7 +48,7 @@ namespace WhiteMvvm.Services.Navigation
         }
         public bool SetMasterPresentation(bool isPresent)
         {
-            MasterDetailPage? masterDetailPage;
+            FlyoutPage? masterDetailPage;
             if (Navigation?.ModalStack != null && Navigation.ModalStack.Count > 1)
             {
                 var lastModal = Navigation.ModalStack[Navigation.ModalStack.Count - 1];
@@ -164,7 +164,7 @@ namespace WhiteMvvm.Services.Navigation
                 {
                     case NavigationPage navigationPage:
                         return GetLastContentPage(navigationPage.CurrentPage);
-                    case MasterDetailPage masterDetailPage:
+                    case FlyoutPage masterDetailPage:
                         return GetLastContentPage(masterDetailPage.Detail);
                     case TabbedPage tabbedPage:
                         return GetLastContentPage(tabbedPage.CurrentPage);
@@ -183,7 +183,7 @@ namespace WhiteMvvm.Services.Navigation
             {
                 switch (page)
                 {
-                    case MasterDetailPage masterDetailPage:
+                    case FlyoutPage masterDetailPage:
                         return GetLastNavigationPage(masterDetailPage.Detail);
                     case TabbedPage tabbedPage:
                         return GetLastNavigationPage(tabbedPage.CurrentPage);
@@ -194,12 +194,12 @@ namespace WhiteMvvm.Services.Navigation
 
             return page as NavigationPage;
         }
-        private static MasterDetailPage? GetLastMasterDetailPage(Page? root)
+        private static FlyoutPage? GetLastMasterDetailPage(Page? root)
         {
             if (root == null) 
-                return root as MasterDetailPage;
+                return root as FlyoutPage;
             var pageType = root.GetType();
-            while (pageType != typeof(MasterDetailPage))
+            while (pageType != typeof(FlyoutPage))
             {
                 switch (root)
                 {
@@ -208,11 +208,11 @@ namespace WhiteMvvm.Services.Navigation
                     case TabbedPage tabbedPage:
                         return GetLastMasterDetailPage(tabbedPage.CurrentPage);
                     default:
-                        return root as MasterDetailPage;
+                        return root as FlyoutPage;
                 }
             }
 
-            return root as MasterDetailPage;
+            return root as FlyoutPage;
         }
         private static TabbedPage? GetLastTabbedPage(Page? root)
         {
@@ -225,7 +225,7 @@ namespace WhiteMvvm.Services.Navigation
                     {
                         case NavigationPage navigationPage:
                             return GetLastTabbedPage(navigationPage.CurrentPage);
-                        case MasterDetailPage masterDetailPage:
+                        case FlyoutPage masterDetailPage:
                             return GetLastTabbedPage(masterDetailPage.Detail);
                         default:
                             return root as TabbedPage;
@@ -321,7 +321,7 @@ namespace WhiteMvvm.Services.Navigation
                 // check on title in master page
                 if (string.IsNullOrEmpty(masterPage.Title))
                     masterPage.Title = "master page";
-                masterDetailModal.MasterDetailPage.Master = masterPage;
+                masterDetailModal.MasterDetailPage.Flyout = masterPage;
                 return masterDetailModal.MasterDetailPage;
             }
             catch (Exception exception)

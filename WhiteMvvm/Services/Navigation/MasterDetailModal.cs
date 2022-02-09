@@ -7,7 +7,7 @@ namespace WhiteMvvm.Services.Navigation
 {
     public class MasterDetailModal : IModal
     {
-        public MasterDetailPage MasterDetailPage { get; set; } = new MasterDetailPage();
+        public FlyoutPage MasterDetailPage { get; set; } = new FlyoutPage();
         public IModal DetailModal { get; set; }
         public IModal MasterModal { get; set; }
         public object? NavigationParameter { get; set; }
